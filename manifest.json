@@ -1,0 +1,39 @@
+{
+  "description": "Adds a browser action icon to the toolbar. Click the button to choose an aws account and service. The respective service url is then openened in another tab.",
+  "manifest_version": 2,
+  "name": "AWS-Chooser",
+  "version": "1.0",
+  "homepage_url": "https://github.com/Henrik-St/AWS-Chooser",
+  "icons": {
+    "48": "icons/aws-logo.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "awschooser.hxstx@mail.de"
+    }
+  },
+  "browser_action": {
+    "default_icon": "icons/aws-logo.png",
+    "theme_icons": [
+      {
+        "light": "icons/aws-logo.png",
+        "dark": "icons/aws-logo.png",
+        "size": 32
+      }
+    ],
+    "default_title": "AWS-Chooser",
+    "default_popup": "popup/choose_aws.html"
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+U"
+      },
+      "description": "Send a 'toggle-feature' event"
+    }
+  }
+}
