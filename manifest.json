@@ -5,7 +5,7 @@
   "version": "1.0",
   "homepage_url": "https://github.com/Henrik-St/AWS-Chooser",
   "icons": {
-    "48": "icons/aws-logo.png"
+    "1024": "icons/aws-logo.png"
   },
   "permissions": [
     "activeTab",
@@ -13,6 +13,12 @@
   ],
   "browser_specific_settings": {
     "gecko": {
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ],
+        "optional": []
+      },
       "id": "awschooser.hxstx@mail.de"
     }
   },
@@ -22,7 +28,7 @@
       {
         "light": "icons/aws-logo.png",
         "dark": "icons/aws-logo.png",
-        "size": 32
+        "size": 1024
       }
     ],
     "default_title": "AWS-Chooser",

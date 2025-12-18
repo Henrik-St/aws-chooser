@@ -1,5 +1,5 @@
-
-html, body {
+html,
+body {
   width: 100%;
   min-width: 200px;
   margin: 0;
@@ -37,7 +37,9 @@ textarea {
 }
 
 
-#save-acc-btn, #save-svc-btn, #save-url-btn {
+#save-acc-btn,
+#save-svc-btn,
+#save-url-btn {
   margin: 0 8px;
   padding: 8px 16px;
   font-size: 1.0em;
@@ -50,7 +52,9 @@ textarea {
   transition: background 0.2s;
 }
 
-#save-acc-btn:hover, #save-svc-btn:hover, #save-url-btn:hover {
+#save-acc-btn:hover,
+#save-svc-btn:hover,
+#save-url-btn:hover {
   background-color: #cce6e6;
 }
 
