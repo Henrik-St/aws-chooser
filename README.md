@@ -8,3 +8,5 @@ AWS Chooser is a browser extension designed to help users quickly select and swi
 - Quickly search and select accounts/services from a popup
 - Simple settings page for easy configuration
 
+# RELEASES
+Find the released versions at: https://addons.mozilla.org/en-GB/developers/addon/23b26f81ea2d46edab7b
