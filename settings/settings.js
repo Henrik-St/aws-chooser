@@ -2,7 +2,11 @@ const url_input = document.getElementById("url-input");
 const accounts_textarea = document.getElementById("accounts");
 const services_textarea = document.getElementById("services");
 
-browser.storage.local.get(["accounts", "services", "sso_url"]).then((result) => {
+
+// eslint-disable-next-line no-undef
+const storage_provider = typeof browser !== "undefined" ? browser : chrome; // Support both Firefox and Chrome
+
+storage_provider.storage.local.get(["accounts", "services", "sso_url"]).then((result) => {
     if (result.accounts) {
         accounts_textarea.value = JSON.stringify(result.accounts, null, 4);
     }
@@ -31,7 +35,7 @@ save_url_btn.addEventListener("click", () => {
     const input_text = document.getElementById("url-input").value;
     if (input_text.trim()) {
         try {
-            browser.storage.local.set({
+            storage_provider.storage.local.set({
                 sso_url: input_text,
             }, () => {
                 window.alert("Settings saved!");
@@ -50,7 +54,7 @@ function saveKey(textarea_id, storage_key) {
         try {
             const parsed = JSON.parse(textarea_text);
 
-            browser.storage.local.set({
+            storage_provider.storage.local.set({
                 [storage_key]: parsed,
             }, () => {
                 window.alert("Settings saved!");

@@ -1,6 +1,8 @@
 (async () => { // to allow async/await usage
 
   // add jsdoc type hints
+  // eslint-disable-next-line no-undef
+  const storage_provider = typeof browser !== "undefined" ? browser : chrome; // Support both Firefox and Chrome
   const sso_url = await getStorageKey("sso_url").catch(() => (""));
   const accounts = await getStorageKey("accounts").catch(() => ({}));
   const services = await getStorageKey("services").catch(() => ({}));
@@ -18,6 +20,7 @@
   render_accounts();
 
   settingsBtn.addEventListener("click", () => {
+    console.log("click settings");
     window.open("../settings/settings.html", "_blank");
   });
 
@@ -76,6 +79,8 @@
 
   // listen for enter key event 
   searchInput.addEventListener("keydown", (event) => {
+
+    console.log("keydown");
     if (event.key === "Enter") {
       if (account === "") {
         const firstAccountButton = popup_content.querySelector("button.selected");
@@ -92,10 +97,10 @@
       account = "";
       render_accounts();
     } else if (event.key === "ArrowDown") {
-      selectedIndex++;
+      selectedIndex = Math.min(selectedIndex + 1, popup_content.children.length - 1);
       rerenderSelection();
     } else if (event.key === "ArrowUp") {
-      selectedIndex--;
+      selectedIndex = Math.max(selectedIndex - 1, 0);
       rerenderSelection();
     }
   });
@@ -150,7 +155,7 @@
     });
   }
   async function getStorageKey(key) {
-    const data = await browser.storage.local.get(key).catch((e) => window.alert(`Error retrieving ${key} from storage: ${e.message}`));
+    const data = await storage_provider.storage.local.get(key).catch((e) => window.alert(`Error retrieving ${key} from storage: ${e.message}`));
     if (data && key in data) {
       return data[key];
     } else {
