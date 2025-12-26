@@ -2,7 +2,7 @@
   "description": "Adds a browser action icon to the toolbar. Click the button to choose an aws account and service. The respective service url is then openened in another tab.",
   "manifest_version": 2,
   "name": "AWS-Chooser",
-  "version": "1.0",
+  "version": "1.1",
   "homepage_url": "https://github.com/Henrik-St/AWS-Chooser",
   "icons": {
     "1024": "icons/aws-logo.png"

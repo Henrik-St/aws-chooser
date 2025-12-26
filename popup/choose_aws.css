@@ -48,6 +48,12 @@ button:hover {
   background-color: #CFF2F2;
 }
 
+
+#popup-content>button.selected {
+  background-color: #A0DAD9;
+}
+
+
 button[type="reset"] {
   background-color: #FBFBC9;
 }
