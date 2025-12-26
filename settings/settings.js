@@ -1,3 +1,20 @@
+const url_input = document.getElementById("url-input");
+const accounts_textarea = document.getElementById("accounts");
+const services_textarea = document.getElementById("services");
+
+browser.storage.local.get(["accounts", "services", "sso_url"]).then((result) => {
+    if (result.accounts) {
+        accounts_textarea.value = JSON.stringify(result.accounts, null, 4);
+    }
+
+    if (result.services) {
+        services_textarea.value = JSON.stringify(result.services, null, 4);
+    }
+
+    if (result.sso_url) {
+        url_input.value = result.sso_url;
+    }
+});
 const save_acc_btn = document.getElementById("save-acc-btn");
 const save_svc_btn = document.getElementById("save-svc-btn");
 const save_url_btn = document.getElementById("save-url-btn");
@@ -17,10 +34,10 @@ save_url_btn.addEventListener("click", () => {
             browser.storage.local.set({
                 sso_url: input_text,
             }, () => {
-                alert("Settings saved!");
+                window.alert("Settings saved!");
             });
         } catch (e) {
-            alert("Invalid JSON in url field." + e.message);
+            window.alert("Invalid JSON in url field." + e.message);
             return;
         }
     }
@@ -36,10 +53,10 @@ function saveKey(textarea_id, storage_key) {
             browser.storage.local.set({
                 [storage_key]: parsed,
             }, () => {
-                alert("Settings saved!");
+                window.alert("Settings saved!");
             });
         } catch (e) {
-            alert(`Invalid JSON in ${textarea_id} field.`);
+            window.alert(`Invalid JSON in ${textarea_id} field: ${e.message}`);
             return;
         }
     }
